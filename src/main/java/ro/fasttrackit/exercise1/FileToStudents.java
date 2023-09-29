@@ -7,16 +7,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FileToStudents {
-    String fileLocation;
-    List<StudentGrade> students;
+    private final String fileLocation;
 
     public FileToStudents(String fileLocation) {
         this.fileLocation = fileLocation;
-        this.students = new ArrayList<>();
     }
 
-    public void start() throws IOException {
+    public List<StudentGrade> readStudentGrades() throws IOException {
         Scanner scanner = new Scanner(Path.of(this.fileLocation));
+        List<StudentGrade> students = new ArrayList<>();
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
@@ -27,5 +26,6 @@ public class FileToStudents {
             }
             students.add(new StudentGrade(pieces[0], pieces[1], Integer.valueOf(pieces[2])));
         }
+    return students;
     }
 }
