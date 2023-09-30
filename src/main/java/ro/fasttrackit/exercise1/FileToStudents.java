@@ -24,7 +24,7 @@ public class FileToStudents {
             if (pieces[0] == null || pieces[1] == null || pieces[2] == null) {
                 continue;
             }
-            students.add(new StudentGrade(pieces[0], pieces[1], Integer.valueOf(pieces[2])));
+            students.add(new StudentGrade(pieces[0], pieces[1], Integer.valueOf(pieces[2]) > 10 ? 10 : Integer.valueOf(pieces[2])));
         }
     return students;
     }

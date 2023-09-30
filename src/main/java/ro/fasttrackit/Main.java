@@ -14,9 +14,13 @@ public class Main {
 //        System.out.println(grades.readStudentGrades());
 
         Classroom classroom = new Classroom(("Files/grades.txt"));
-        System.out.println(classroom.getGradesForDiscipline("Computer Science"));
-        System.out.println(classroom.getGradesForStudent("Demetria Cosme"));
-        System.out.println(classroom.getMaxGrade("Computer Science"));
+//        System.out.println(classroom.getGradesForDiscipline("Computer Science"));
+//        System.out.println(classroom.getGradesForStudent("Demetria Cosme"));
+//        System.out.println(classroom.getMaxGrade("Computer Science"));
+//        System.out.println(classroom.getMaxGrade());
+//        System.out.println(classroom.getAverageGrade("Computer Science"));
+//        System.out.println(classroom.getWorstGrade("Computer Science"));
+        System.out.println(classroom.getGradesPerDiscipline());
 
     }
 }
