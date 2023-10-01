@@ -8,12 +8,8 @@ import java.util.Map;
 
 public class Classroom {
     private final List<StudentGrade> students;
-    private final String fileLocation;
-
 
     public Classroom(String fileLocation) throws IOException {
-        this.fileLocation = fileLocation;
-
         this.students = new FileToStudents(fileLocation).readStudentGrades();
     }
 
@@ -61,7 +57,7 @@ public class Classroom {
     }
 
     public Integer getAverageGrade(String discipline) {
-        List<Integer> grades = new ArrayList();
+        List<Integer> grades = new ArrayList<>();
 
         for (StudentGrade student : this.students) {
             if (student.discipline().equals(discipline)) {
@@ -69,7 +65,7 @@ public class Classroom {
             }
         }
         int sum = 0;
-        int average = 0;
+        int average;
         for (Integer grade : grades) {
             sum += grade;
         }
@@ -78,10 +74,12 @@ public class Classroom {
     }
 
     public StudentGrade getWorstGrade(String discipline) {
-        StudentGrade minGrade = new StudentGrade(null, null, 10);
+        StudentGrade minGrade = new StudentGrade(null, null, 11);
         for (StudentGrade student : this.students) {
-            if (student.grade() < minGrade.grade()) {
-                minGrade = student;
+            if (student.discipline().equals(discipline)) {
+                if (student.grade() < minGrade.grade()) {
+                    minGrade = student;
+                }
             }
         }
         return minGrade;
@@ -91,7 +89,7 @@ public class Classroom {
         Map<String, List<Integer>> gradesPerDiscipline = new HashMap<>();
 
         for (StudentGrade student : this.students) {
-            if(!gradesPerDiscipline.containsKey(student.discipline())){
+            if (!gradesPerDiscipline.containsKey(student.discipline())) {
                 List<Integer> grades = getGradesForDiscipline(student.discipline());
                 gradesPerDiscipline.put(student.discipline(), grades);
             }
